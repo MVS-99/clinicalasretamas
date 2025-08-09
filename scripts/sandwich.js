@@ -13,17 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Toggle mobile menu
   function toggleMenu() {
     var isActive = navMenu.classList.contains("active");
-
-    if (isActive) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  }
-
-  // Toggle mobile menu
-  function toggleMenu() {
-    var isActive = navMenu.classList.contains("active");
     if (isActive) {
       closeMenu();
     } else {

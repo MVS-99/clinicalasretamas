@@ -32,7 +32,7 @@ body.menu-open {
 
 
 .nav-container {
-    position: fixed;
+    position: sticky;
     height: auto;
     max-width: 1440px;
     top: 0;
@@ -198,35 +198,74 @@ body.menu-open {
     transform: rotate(-45deg) translate(8px, -8px);
 }
 
-/* Tablet styles */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .nav-container {
-        padding: 1rem 1.5rem;
-        justify-content: space-between;
-    }
+.mainSlider {
+    position: relative;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #f8f9fa;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
 
-    .logoClinica,
-    .logoRetamas {
-        font-size: 1.3rem;
-    }
+.slideInfra {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 
-    .nav-list {
-        gap: 1.5rem;
-    }
+.sliderImageContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+}
 
-    .nav-list a {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
-    }
+.sliderImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    .cta a {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
-    }
+.sliderImage.sliderImageActive {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+.sliderImage img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+}
+
+
+#radio1:checked~.sliderImage1 {
+    margin-left: 0;
+}
+
+#radio2:checked~.sliderImage1 {
+    margin-left: -25%;
+}
+
+#radio3:checked~.sliderImage1 {
+    margin-left: -50%;
 }
 
 /* Mobile styles */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     body {
         padding-top: 70px;
     }
@@ -257,6 +296,7 @@ body.menu-open {
         height: 100vh;
         background: rgba(249, 254, 254, 0.98);
         backdrop-filter: blur(20px);
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -271,13 +311,14 @@ body.menu-open {
         transform: translateX(0);
     }
 
-    .nav-list {
+    .navList {
+        display: flex;
         flex-direction: column;
         gap: 1rem;
         text-align: center;
     }
 
-    .nav-list a {
+    .navList a {
         font-size: 1.2rem;
         padding: 1rem 2rem;
         min-height: 44px;
