@@ -1,7 +1,6 @@
 <?php
-// Configuración de email - Cambia estos valores por los de tu hosting
-$to_email = "tu-email@tudominio.com"; // Cambia por tu email corporativo de Hostalia
-$from_email = "noreply@tudominio.com"; // Cambia por un email válido de tu dominio
+$to_email = "tbd";
+$from_email = "noreplytbd";
 
 // Verificar que la petición sea POST
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
