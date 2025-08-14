@@ -34,7 +34,6 @@ body.menu-open {
 .nav-container {
     position: sticky;
     height: auto;
-    max-width: 1440px;
     top: 0;
     display: flex;
     align-items: center;
@@ -141,7 +140,7 @@ body.menu-open {
     font-weight: normal;
     font-size: 1rem;
     text-decoration: none;
-    font-family: Montserrat;
+    font-family: "Montserrat";
     font-style: normal;
     font-weight: normal;
     transition: all 0.3s ease;
@@ -198,70 +197,656 @@ body.menu-open {
     transform: rotate(-45deg) translate(8px, -8px);
 }
 
-.mainSlider {
+.slider-container {
     position: relative;
     width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    overflow: hidden;
-    background: #f8f9fa;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.slideInfra {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.sliderImageContainer {
-    position: relative;
-    width: 100%;
-    display: flex;
-}
-
-.sliderImage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
     align-items: center;
-    justify-content: center;
-}
-
-.sliderImage.sliderImageActive {
-    opacity: 1;
-    visibility: visible;
-    z-index: 2;
-}
-
-.sliderImage img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     height: 100%;
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    align-items: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.slide {
+    position: relative;
+    width: 33.333%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* CRITICAL: Responsive Image Cropping */
+.slide-image {
+    width: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: right center; /* Default: show full image */
+    transition: object-position 0.3s ease;
+}
+
+/* Text positioning on "dull" left side */
+.text-overlay {
+    position: absolute;
+    top: 68px;
+    left: 0;
+    width: 50%;
+    height: 100%;
     z-index: 1;
 }
 
-
-#radio1:checked~.sliderImage1 {
-    margin-left: 0;
+.slide-content {
+    position: absolute;
+    top: 50%;
+    left: clamp(30px, 6vw, 80px);
+    transform: translateY(-50%);
+    z-index: 2;
+    color: #333333;
+    max-width: clamp(300px, 40vw, 500px);
 }
 
-#radio2:checked~.sliderImage1 {
-    margin-left: -25%;
+.slide-title {
+    font-size: clamp(0.1rem, 10vw, 3.2rem);
+    font-family: "Playfair Display";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.1;
+    margin-bottom: clamp(15px, 2vh, 25px);
 }
 
-#radio3:checked~.sliderImage1 {
-    margin-left: -50%;
+.slide-subtitle {
+    font-size: clamp(0.4rem, 5vw, 1.3rem);
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.4;
+    opacity: 0.95;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.prev-btn { left: 30px; }
+.next-btn { right: 30px; }
+
+.nav-btn:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Dots Indicator */
+.dots-container {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 15px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+.LASRETAMASAZUL {
+    margin-top: 20px;
+    color: #1B77BB;
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+     /* Responsive font-size: 
+     – minimum 12px 
+     – scales with viewport (2.5vw) 
+     – maximum 16px */
+    font-size: clamp(12px, 2.5vw, 16px);
+    line-height: 1.25;
+    text-align: center;
+}
+
+.QUIEN {
+    color: #333333;
+    font-family: Playfair Display;
+    font-style: normal;
+    font-weight: normal;
+     /* Responsive font-size:
+     – minimum ~32px (2rem)
+     – scales with viewport (6vw)
+     – maximum 53.0826px (~3.3177rem) */
+    font-size: clamp(2rem, 6vw, 3.3177rem);
+     /* Proportional line-height:
+     71px / 53.0826px ≈ 1.337 */
+    line-height: 1.337;
+    text-align: center;
+}
+
+.fstpar {
+    color: #333333;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: clamp(0.875rem, 2vw, 1.1875rem);
+    line-height: 1.58;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 1rem;
+    max-width: 800px;
+}
+
+.ImageCarrousel{
+    margin-top: 40px;
+    position: relative;
+    flex-wrap: wrap;
+    display: flex;
+    gap: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+.carrousel-content {
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(0.75rem, 2.5vw, 2rem);
+}
+
+.carrousel-content img{
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0.5rem;
+    object-fit: contain;
+}
+
+.carrousel-content p{
+  font-size: clamp(0.875rem, 2vw, 1.1448rem);
+  font-family: "Montserrat";
+  line-height: 1.20;
+  color: #333;
+  word-wrap: break-word;
+}
+
+.secondarySliderContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.secondarySliderContainer h2{
+    margin-bottom: 2rem;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2.5rem;
+}
+
+.secondarySlider {
+    position: relative;
+    max-height: 500px;
+    width: 100%;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.secondarySlides {
+    display: flex;
+    width: 500%; /* 5 slides * 100% */
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(0);
+}
+
+.secondarySlide {
+    width: 20%; /* 100% / 5 slides */
+    height: 100%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.secondarySlide img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 0;
+}
+
+/* Slide Transitions */
+.secondarySlides.slide-0 { transform: translateX(0); }
+.secondarySlides.slide-1 { transform: translateX(-20%); }
+.secondarySlides.slide-2 { transform: translateX(-40%); }
+.secondarySlides.slide-3 { transform: translateX(-60%); }
+.secondarySlides.slide-4 { transform: translateX(-80%); }
+
+/* Loading Animation */
+.secondarySlider.loading::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #1B77BB;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 1000;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+.containerPortal {
+    position: relative;
+    display: flex;
+    flex-wrap:wrap;
+    gap: 1rem;
+}
+
+.portalCard {
+  max-width: 553px;
+  max-height: 610px;
+  background: #FEFEFE;
+  box-shadow: 0px 4px 35px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin: auto;
+  flex-direction: column;
+}
+
+.portalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem; 
+}
+
+.portalHeader h2{
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: normal;
+  font-size: clamp(2rem, 6vw, 3.3177rem);
+  line-height: 1.337;
+  color: #333333;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.portalHeader img{
+    height: auto;
+}
+
+.portalCard p{
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18.3169px;
+  line-height: 30px;
+  color: #333333;
+}
+
+.portalCard a{
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18.3169px;
+  line-height: 30px;
+  color: #1B77BB;
+}
+
+
+.portalOdont {
+  max-width: 553px;
+  max-height: 610px;
+  background: #FEFEFE;
+  box-shadow: 0px 4px 35px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  padding: 10px;
+  margin: auto;
+}
+
+.ghibliBoutUs {
+    position: relative;
+    margin-top: 5rem;
+}
+
+.ghibliHeader {
+    text-align: center;
+}
+
+.ghibliHeader h2{
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(12px, 2.5vw, 16px);
+  line-height: 1.25;
+  letter-spacing: 0.1em;
+  color: #1B77BB;
+}
+
+.ghibliHeader h1 {
+    font-family: "Playfair Display";
+    font-style: normal;
+    font-weight: normal;
+    font-size: clamp(2rem, 6vw, 3.3177rem);
+    line-height: 1.337;
+    text-align: center;
+    color: #333333;
+}
+
+.ghibliRoster {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.roster h3{
+  font-size: clamp(0.875rem, 2vw, 1.1448rem);
+  font-family: "Montserrat";
+  line-height: 1.20;
+  color: #333;
+}
+
+.roster p{
+  font-size: clamp(0.875rem, 2vw, 1.1448rem);
+  font-family: "Montserrat";
+  line-height: 1.20;
+  color: #333;
+}
+
+.contactSection {
+    position: relative;
+}
+
+.contactHeader {
+    margin-top: 7rem;
+}
+
+.contactHeader h2{
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+  font-size: clamp(12px, 2.5vw, 16px);
+  line-height: 1.25;
+  letter-spacing: 0.1em;
+  color: #1B77BB;
+}
+
+.contactHeader h1{
+    font-family: "Playfair Display";
+    font-style: normal;
+    font-weight: normal;
+    font-size: clamp(2rem, 6vw, 3.3177rem);
+    line-height: 1.337;
+    text-align: center;
+    color: #333333;
+}
+
+.contactSection{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.contactContainer {
+    display: flex;
+    gap: 3rem;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contactsubTitle {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: normal;
+  font-size: clamp(12px, 2.5vw, 16px);
+  line-height: 1.337;
+  color: #333333;
+}
+
+.contactData p{
+  font-size: clamp(0.875rem, 2vw, 1.1448rem);
+  font-family: "Montserrat";
+  line-height: 1.20;
+  color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    font-family: "Montserrat";
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    font-family: "Montserrat";
+    background: transparent;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-bottom-color: #007bff;
+}
+
+/* Radio buttons styling */
+.radio-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-label {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: "Playfair Display"
+}
+
+.radio-group input[type="radio"]:checked + .radio-label {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.radio-label:hover {
+    border-color: #007bff;
+}
+
+/* Textarea styling */
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+textarea.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Checkbox styling */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+
+.checkbox-group label {
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    font-family: "Montserrat"
+}
+
+.checkbox-group a {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+/* Submit button */
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.submit-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Error messages */
+.error-message {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+.form-group.error .form-control {
+    border-bottom-color: #dc3545;
+}
+
+.form-group.error textarea.form-control {
+    border-color: #dc3545;
+}
+
+/* Success message */
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border: 1px solid #c3e6cb;
+    display: none;
+}
+
+.success-message.show {
+    display: block;
+}
+
+.privDer {
+    display:flex;
+    flex-direction: row;
+    padding: 2rem;
+    margin-top: auto;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+.privDer p{
+  font-size: clamp(0.875rem, 2vw, 1.1448rem);
+  font-family: "Montserrat";
+  line-height: 1.20;
+  color: #333;
+}
+
+.privDer a{
+  font-size: clamp(0.875rem, 2vw, 1.1448rem);
+  text-decoration: none;
+  font-family: "Montserrat";
+  line-height: 1.20;
+  color: #333;
 }
 
 /* Mobile styles */
@@ -336,5 +921,26 @@ body.menu-open {
         min-width: 200px;
         padding: 1rem 2rem;
         font-size: 1.2rem;
+    }
+
+    .slide-image {
+        object-position: 70% center; /* Start shifting focus right */
+    }
+    
+    .slide-content {
+        left: clamp(25px, 5vw, 60px);
+        max-width: clamp(280px, 35vw, 450px);
+    }
+    
+    .slide-title {
+        font-size: clamp(1rem, 4vw, 2.8rem);
+    }
+    
+    .slide-subtitle {
+        font-size: clamp(0.6rem, 2vw, 1.2rem);
+    }
+
+    .nav-btn {
+        display: none;
     }
 }

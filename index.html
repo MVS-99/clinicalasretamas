@@ -134,14 +134,14 @@
         <!-- Navigation menu -->
         <nav class="navMenu" role="navigation" id="main-navigation" aria-label="Main navigation">
             <ul class="navList">
-                <li><a href="/odontologia.html">Odontología</a></li>
-                <li><a href="/podologia.html">Podología</a></li>
+                <li><a href="odontologia.html">Odontología</a></li>
+                <li><a href="podologia.html">Podología</a></li>
                 <li><a href="#NosotrasPointer">Nosotras</a></li>
-                <li><a href="/localizacion.html">Cómo Llegar</a></li>
+                <li><a href="#MapaPointer">Cómo Llegar</a></li>
             </ul>
             <div class="border"></div>
             <div class="cta">
-                <a href="/contact.html">Pedir Cita</a>
+                <a href="#appointmentForm">Pedir Cita</a>
             </div>
         </nav>
     </header>
@@ -150,34 +150,286 @@
     <!-- Navigation menu ends-->
 
     <!-- Main Slider starts-->
-    <div class="mainSlider">
-        <div class="slideInfra">
-            <!-- Radio buttons start-->
-            <input type="radio" id="radio1">
-            <input type="radio" id="radio2">
-            <input type="radio" id="radio3">
-            <!-- Radio buttons end-->
-            <!-- Slider Images start-->
-            <div class="sliderImageContainer">
-                <div class="sliderImage sliderImageActive">
-                    <img src="./assets/Banner1.png" alt="Rosa en la recepción de la clínica, luz calida.">
-                </div>
-                <div class="sliderImage">
-                    <img src="./assets/Banner2.png" alt="Ana, ofreciendo un servicio de podología">
-                </div>
-                <div class="sliderImage">
-                    <img src="./assets/Banner3.png" alt="Amalia, ofreciendo un servicio de odontología">
+    <div class="slider-container">
+        <div class="slider-track" id="sliderTrack">
+            <!-- Slide 1 - Reception Area -->
+            <div class="slide">
+                <img src="assets/Banner1.png" alt="Clínica Las Retamas - Área de recepción" class="slide-image">
+                <div class="text-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="slide-title">Una mejor salud puede comenzar aquí</h1>
+                    <p class="slide-subtitle">Somos profesionales con más de 20 años de experiencia en Odontología y Podología.</p>
                 </div>
             </div>
-            <!-- Slider Images end-->
-            <!-- Automatic Nav starts-->
-            <div class="sliderAutoNav"></div>
-            <!-- Automatic Nav ends-->
+            
+            <!-- Slide 2 - Podiatry Treatment -->
+            <div class="slide">
+                <img src="assets/Banner2.png" alt="Clínica Las Retamas - Tratamiento podología" class="slide-image">
+                <div class="text-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="slide-title">Cuidamos tus pies de manera integral</h1>
+                    <p class="slide-subtitle">Especialistas en podología y cirugía del pie.</p>
+                </div>
+            </div>
+            
+            <!-- Slide 3 - Dental Treatment -->
+            <div class="slide">
+                <img src="assets/Banner3.png" alt="Clínica Las Retamas - Tratamiento dental" class="slide-image">
+                <div class="text-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="slide-title">Especialistas en ATM</h1>
+                    <p class="slide-subtitle">Tecnología avanzada para tu mejor sonrisa.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <button class="nav-btn prev-btn" id="prevBtn">‹</button>
+        <button class="nav-btn next-btn" id="nextBtn">›</button>
+        
+        <div class="dots-container">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
         </div>
     </div>
     <!-- JS files and scripts-->
     <script src="scripts/slider.js"></script>
     <!-- Main Slider ends-->
-</body>
 
+    <!--Start of «About Us» -->
+    <div class="LASRETAMASAZUL">CLÍNICA LAS RETAMAS</div>
+    <div class="QUIEN">¿Quiénes somos?</div>
+    <p class="fstpar">
+    Somos una familia profesional con más de 20 años de experiencia cuidando la
+    sonrisa y los pies de numerosos pacientes que confían en nosotros.<br/>
+    <br/>
+    Desarrollamos nuestras especialidades tratando los principales problemas de
+    salud sin perder de vista la estética y la práctica personal de cada uno de
+    nuestros pacientes haciendo valoraciones personalizadas y con esmero. <b>Beatriz</b>,
+    <b>Ana</b> y <b>Amalia Monsalve</b> cuidan con mimo y cariño cada detalle para hacer que
+    nuestros pacientes se sientan como en casa.<br/>
+    <br/>
+    Pide tu cita y descubre todo lo que podemos hacer por ti.<br/>
+    <b>¡Te esperamos!</b>
+    </p>
+    
+    <!-- Logo Carrousel-->
+    <div class="ImageCarrousel">
+        <div class="carrousel-content">
+            <img src="assets/icon1.png">
+            <p class="carrousel-text">¡Primera<br>visita gratis!</p>
+        </div>
+        <div class="carrousel-content">
+            <img src="assets/icon2.png">
+            <p class="carrousel-text">Facilidades<br>de pago</p>
+        </div>
+        <div class="carrousel-content">
+            <img src="assets/icon3.png">
+            <p class="carrousel-text">Expertos en<br>implantes dentales<br>y ortodoncia</p>
+        </div>
+        <div class="carrousel-content">
+            <img src="assets/icon4.png">
+            <p class="carrousel-text">Última tecnología<br>en podología</p>
+        </div>
+        <div class="carrousel-content">
+            <img src="assets/icon5.png">
+            <p class="carrousel-text">Para toda la familia<br>adultos y niños</p>
+        </div>
+    </div>
+
+    <!--Second slider -->
+
+    <div class="secondarySliderContainer">
+        <h2>Trabajamos para ofrecerte los <span style="color: #1B77BB">mejores tratamientos</span> con las herramientas más avanzadas</h2>
+        <div class="secondarySlider">
+            <div class="secondarySlides">
+                <div class="secondarySlide">
+                    <img src="assets/SliderN1.png">
+                </div>
+                <div class="secondarySlide">
+                    <img src="assets/SliderN2.png">
+                </div>
+                <div class="secondarySlide">
+                    <img src="assets/SliderN3.png">
+                </div>
+                <div class="secondarySlide">
+                    <img src="assets/SliderN4.png">
+                </div>
+                <div class="secondarySlide">
+                    <img src="assets/SliderN5.png">
+                </div>
+            </div>
+        </div>
+        <!-- Navigation Arrows -->
+    <script src="scripts/secondslider.js"></script>
+    </div>
+
+    <!-- Portal to Specializations -->
+    <div class="containerPortal">
+        <div class="portalCard">
+            <div class="portalHeader">
+                <h2>Podología</h2>
+                <img src="assets/pie.png">
+            </div>
+            <p>
+                Cuidamos los pies de manera íntegra. Las patologías del pie no
+                sólo afectan desde el punto de vista físico y social, sino que
+                pueden mermar la calidad de vida, la actitud en el trabajo y la
+                respuesta deportiva de manera notable.<br><br>De esta forma
+                nuestros pacientes pueden ser niños, mayores, deportistas y
+                personas que trabajan de pie.
+            </p>
+            <a href="podologia.html">DESCUBRE NUESTRAS ESPECIALIDADES</a>
+        </div>
+        <div class="portalCard">
+            <div class="portalHeader">
+                <h2>Odontología</h2>
+                <img src="assets/diente.png">
+            </div>
+            <p>
+                Cuidamos tu sonrisa. Nos formamos constantemente para realizar
+                los tratamientos con las técnicas y herramientas más avanzadas.
+                Nuestros profesionales te harán un seguimiento personal,
+                garantizando que se conozca el caso en concreto y se reciba la
+                atención dental adecuada. <br><br>Nuestros pacientes pueden ser
+                toda la familia, desde los más jóvenes hasta los más mayores. 
+            </p>
+            <a href="odontologia.html">DESCUBRE NUESTRAS ESPECIALIDADES</a>
+        </div>
+    </div>
+
+    <!-- Ghibli Bout'us -->
+    <div class="ghibliBoutUs">
+        <div class="ghibliHeader">
+            <h2>Nosotras</h2>
+            <h1>Equipo Profesional</h1>
+        </div>
+        <div class="ghibliRoster" id="NosotrasPointer">
+            <div class="roster">
+                <img src="assets/Amalia.png">
+                <h3>Amalia<br>Monsalve Laguna</h3>
+                <p>Especialista en<br>implantes dentales,<br> ortodoncia y ATM</p>
+            </div>
+            <div class="roster">
+                <img src="assets/Beatriz.png">
+                <h3>Beatriz<br>Monsalve Laguna</h3>
+                <p>Grado en Podología<br>Especialista en<br> ortopedia y cirugía del<br>pie</p>
+            </div>
+            <div class="roster">
+                <img src="assets/Ana.png">
+                <h3>Ana<br>Monsalve Laguna</h3>
+                <p>Grado en Podología<br>Especialista en<br> ortopedia y cirugía del<br>pie</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact! -->
+    <div class="contactHeader">
+        <h2>Contacto</h2>
+        <h1>Clínica Las Retamas</h1>
+    </div>
+    <div class="contactSection">
+        <div class="contactContainer">
+            <div class="contactsubTitle">
+                <h1>Formulario de cita online</h1>
+            </div>
+            <form id="appointmentForm" class="appointment-form"  action="scripts/process_form.php" method="POST">
+                <div class="form-group">
+                    <label for="nombre" class="form-label">NOMBRE Y APELLIDOS*</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" required>
+                    <span class="error-message" id="nombreError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono" class="form-label">TELÉFONO*</label>
+                    <input type="tel" id="telefono" name="telefono" class="form-control" required>
+                    <span class="error-message" id="telefonoError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">CORREO ELECTRÓNICO</label>
+                    <input type="email" id="email" name="email" class="form-control">
+                    <span class="error-message" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="radio-group">
+                        <input type="radio" id="odontologia" name="servicio" value="ODONTOLOGÍA" required>
+                        <label for="odontologia" class="radio-label">ODONTOLOGÍA</label>
+                        
+                        <input type="radio" id="podologia" name="servicio" value="PODOLOGÍA" required>
+                        <label for="podologia" class="radio-label">PODOLOGÍA</label>
+                    </div>
+                    <span class="error-message" id="servicioError"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="privacidad" name="privacidad" required>
+                        <label for="privacidad" class="checkbox-label">
+                            Acepto la <a href="priv.html" target="_blank">política de privacidad</a>
+                        </label>
+                    </div>
+                    <span class="error-message" id="privacidadError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje" class="form-label">MENSAJE*</label>
+                    <textarea id="mensaje" name="mensaje" class="form-control" placeholder="Describa su consulta aquí" required></textarea>
+                    <span class="error-message" id="mensajeError"></span>
+                </div>
+
+                <button type="submit" class="btn btn--primary btn--full-width submit-button">
+                    Pedir cita
+                </button>
+            </form>
+            <div id="successMessage" class="success-message">
+                <h3>¡Solicitud enviada correctamente!</h3>
+                <p>Su solicitud de cita ha sido enviada. Nos pondremos en contacto con usted en breve.</p>
+                <div class="email-preview">
+                    <h4>Vista previa del email enviado:</h4>
+                    <div id="emailPreview" class="email-content"></div>
+                </div>
+            </div>
+        </div>
+        <div class="contactContainer">
+            <div class="contactsubTitle">
+                <h1>Odontología y Podología</h1>
+            </div>
+            <div class="contactData">
+                <img src="assets/direction_info.png">
+                <p> Avenida las retamas 27, 1ºB Alcorcón, Madrid</p>
+            </div>
+            <div class="contactData">
+                <img src="assets/number-info.png">
+                <p> 916 43 88 99</p>
+            </div>
+            <div class="contactData">
+                <img src="assets/mail-info.png">
+                <p>info@clinicalasretamas.com</p>
+            </div>
+            <div class="contactData">
+                <a href="https://api.whatsapp.com/send?phone=34916438899">
+                    <img src="assets/Whatsapp.png">
+                </a>
+                <p>Escribenos por Whatsapp</p>
+            </div>
+            <div class="contactData" id="MapaPointer">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3041.1967746255687!2d-3.835829984646689!3d40.33798067937438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd418eb023253ea9%3A0xb9ec3f500da2e983!2sCl%C3%ADnica%20las%20Retamas!5e0!3m2!1ses!2ses!4v1620521283890!5m2!1ses!2ses" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/form.js"></script>
+
+    <!-- PRIV && Derechos -->
+    <div class="privDer">
+        <p><script>document.write(new Date().getFullYear());</script> Clínica las retamas</p>
+        <a href="priv.html">Política de Privacidad</a>
+        <a href="avl.html">Aviso legal</a>
+        <p>MVS</p>
+    </div>
+
+</body>
 </html>
