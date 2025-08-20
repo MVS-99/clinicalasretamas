@@ -447,6 +447,33 @@ body.menu-open {
     width: 20%; /* Default for first slide */
 }
 
+.privDer {
+    display:flex;
+    flex-direction: row;
+    padding: 2rem;
+    margin-top: auto;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+.privDer p{
+  font-size: clamp(0.875rem, 2vw, 1.1448rem);
+  font-family: "Montserrat";
+  line-height: 1.20;
+  color: #333;
+}
+
+.privDer a{
+  font-size: clamp(0.875rem, 2vw, 1.1448rem);
+  text-decoration: none;
+  font-family: "Montserrat";
+  line-height: 1.20;
+  color: #333;
+}
+
+
 /* Mobile styles */
 @media (max-width: 1200px) {
     body {
